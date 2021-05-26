@@ -9,6 +9,9 @@ import {
   DoCheck,
   AfterContentInit,
   AfterContentChecked,
+  AfterViewInit,
+  AfterViewChecked,
+  OnDestroy,
 } from "@angular/core";
 
 @Component({
@@ -18,7 +21,15 @@ import {
   encapsulation: ViewEncapsulation.Emulated, // None, ShadowDom
 })
 export class ServerElementComponent
-  implements OnInit, OnChanges, DoCheck, AfterContentInit, AfterContentChecked {
+  implements
+    OnInit,
+    OnChanges,
+    DoCheck,
+    AfterContentInit,
+    AfterContentChecked,
+    AfterViewInit,
+    AfterViewChecked,
+    OnDestroy {
   @Input("srvElement") element: { type: string; name: string; content: string };
   @Input() name: string;
 
@@ -45,5 +56,17 @@ export class ServerElementComponent
 
   ngAfterContentChecked() {
     console.log("ngAfterContentChecked called!");
+  }
+
+  ngAfterViewInit() {
+    console.log("ngAfterViewInit called!");
+  }
+
+  ngAfterViewChecked() {
+    console.log("ngAfterViewChecked called!");
+  }
+
+  ngOnDestroy() {
+    console.log("ngOnDestroy called!");
   }
 }
